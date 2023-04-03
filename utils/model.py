@@ -42,7 +42,7 @@ class ECG_XNOR_Full_Bin(nn.Module):
         if self.is_block7:
             batch_data = self.block7(batch_data)
         batch_data = self.dropout0(batch_data)
-        batch_data = batch_data.max(dim=2)
+        batch_data = batch_data.sum(dim=2)
         return batch_data
 
 class ECG_XNOR_Ori(nn.Module):
@@ -82,7 +82,7 @@ class ECG_XNOR_Ori(nn.Module):
         if self.is_block7:
             batch_data = self.block7(batch_data)
         batch_data = self.dropout0(batch_data)
-        batch_data = batch_data.max(dim=2)[0]
+        batch_data = batch_data.sum(dim=2)
         return batch_data
 
 
